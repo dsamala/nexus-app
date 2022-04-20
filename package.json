@@ -8,6 +8,7 @@
   "private": true,
   "dependencies": {
     "@react-navigation/native": "^6.0.10",
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
