@@ -1,0 +1,19 @@
+{
+  "name": "nexus-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/dsamala/nexus-app.git",
+  "author": "Denzel",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@react-navigation/native": "^6.0.10",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.3.0",
+    "react-native-safe-area-context": "^4.2.4",
+    "react-native-screens": "^3.13.1"
+  }
+}
