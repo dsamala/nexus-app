@@ -1,10 +1,39 @@
-import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
+import axios from 'axios';
+import { NavigationContainer } from '@react-navigation/native';
+
+
+
+
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState();
+  const [messageType, setMessageType] = useState();
+ 
 
+  const handleLogin = (email, password) => {
+    const url = 'http://localhost:3000/api/auth/login';
+      axios
+        .post(url, {email, password})
+        .then((res) => {
+          console.log(res);
+          const result = res.data;
+          const {message, status, data} = result;
+          navigation.navigate('Welcome',)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+
+  const handleMessage = (message, type = 'FAILED') => {
+    setMessage(message);
+    setMessageType(type);
+  }
 
   return (
     <KeyboardAvoidingView style={styles.container}>
@@ -29,10 +58,17 @@ const LoginScreen = () => {
 
     <View style={styles.buttonContainer}>
         <TouchableOpacity
-        onPress={() => { }}
+        onPress={handleLogin}
         style={styles.button}>
             <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+        // onPress={}
+        style={styles.passwordButton}>
+            <Text style={styles.passwordText}>Forgot Password?</Text>
+        </TouchableOpacity>
+      
       
         <TouchableOpacity
         onPress={() => { }}
@@ -88,12 +124,17 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
-
   buttonOutlineText: {
     color: '#7E5A6D',
     fontWeight: '700',
     fontSize: 16,
   },
+  passwordButton: {
+    margin: 10,
+  },
+  passwordText: {
+    color: '#7E5A6D',
+  }
 
 
 })
